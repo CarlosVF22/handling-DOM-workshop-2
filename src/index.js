@@ -15,16 +15,27 @@ const createImageNode = () =>{
     const imagen =document.createElement('img');
     imagen.className ="mx-auto";
     imagen.width ="320";
-    imagen.src=`https://randomfox.ca/images/${random()}.jpg`; //ToDo (por hacer)
+    imagen.dataset.src=`https://randomfox.ca/images/${random()}.jpg`; //ToDo (por hacer)
 
-    container.appendChild(imagen);
+    //creando imgWrapper
+    const imgWrapper = document.createElement("div");
+    imgWrapper.className = "bg-gray-300";
+    // imgWrapper.style.minHeight ="100px";
+    imgWrapper.style.display ="inline-block";
+
+    imgWrapper.appendChild(imagen)
+    container.appendChild(imgWrapper);
+
+    appendedImages++;
+    printLog();
 
     return container;
 };
 
 const mountNode =document.getElementById("images");
 
-const addButton = document.querySelector("button");
+const addButton = document.getElementById("add");
+const removeButton = document.getElementById("remove");
 
 const addImage = () => {
     const newImage = createImageNode();
@@ -32,6 +43,15 @@ const addImage = () => {
     registerImage(newImage);
 };
 
+const removeImages =() =>{
+    console.log(mountNode.childNodes);
+    [...mountNode.childNodes].forEach(child =>{
+        child.remove();
+    })
+
+};
+
 
 addButton.addEventListener("click",addImage);
+removeButton.addEventListener("click",removeImages);
 

@@ -49,7 +49,8 @@
           pages using GitHub Actions. Learn more:
         </p>
 
-        <button class="p-3" type="button">Agregar imagen</button>
+        <button id="add" class="p-3" type="button">Agregar imagen</button>
+        <button id="remove" class="p-3" type="button">Limpiar</button>
         
         <div id="images">
         </div>
@@ -58,6 +59,17 @@
     </div>
 
     <!-- Add more scripts here -->
+    <script>
+      let appendedImages =0;
+      let loadedImages = 0;
+
+      const printLog = () =>{
+        console.log(`* se han agregado ${appendedImages} imagenes`);
+        console.log(`* se han cargado ${loadedImages} imagenes`);
+        console.log("--------------------------------------------");
+
+      }
+    </script>
     <script type="module" src="%PUBLIC_URL%/_dist_/index.js"></script>
   </body>
 </html>

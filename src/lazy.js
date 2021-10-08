@@ -4,19 +4,28 @@ const isIntersecting = (entry) => {
     return entry.isIntersecting; //true si esta dentro de la pantalla, falsa si es lo contrario
 };
 
-const action = (entry) => {
-    const nodo = entry.target
-    console.log("holis");
+const loadImage = (entry) => {
+    const container = entry.target //container (DIV)
+    const imagen = container.querySelector("img");
+    const url = imagen.dataset.src;
+
+    //cargar la imagen
+    imagen.src =url;
+
+    loadedImages++;
+    printLog();
+
+    // debugger;
 
     //desregistra la imagen (unlisten)
-    observer.unobserve(nodo);
+    observer.unobserve(container);
 };
 
 // la funcion que recibe IntersectionObserver es la funcion que hacer por cada imagen
 const observer = new IntersectionObserver((entries)=>{
     entries
         .filter(isIntersecting)
-        .forEach(action)
+        .forEach(loadImage)
 });
 
 export const registerImage = (imagen) =>{
