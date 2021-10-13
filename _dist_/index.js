@@ -15,7 +15,7 @@ const createImageNode = () =>{
     const imagen =document.createElement('img');
     imagen.className ="mx-auto";
     imagen.width ="320";
-    imagen.dataset.src=`https://randomfox.ca/images/${random()}.jpg`; //ToDo (por hacer)
+    imagen.dataset.src=`https://randomfox.ca/images/${random()}.jpg`;
 
     //creando imgWrapper
     const imgWrapper = document.createElement("div");
